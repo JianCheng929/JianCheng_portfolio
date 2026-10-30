@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liew Jian Cheng | AI & IoT Engineer Portfolio</title>
+  <meta name="description" content="Portfolio of Liew Jian Cheng - AI & IoT Engineer, Computer Science (AI) at University of Malaya. Showcasing BizPilot, BLUEPIXELS SmartLocator, and technical leadership.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0a3254',
+              'navy-deep': '#062038',
+              'navy-light': '#0f4a7a',
+              sky: '#0284c7',
+              cyan: '#38bdf8',
+              surface: '#ffffff',
+              canvas: '#f8fafc',
+              border: '#e2e8f0',
+              'pill-bg': '#e0f2fe',
+              'pill-text': '#0369a1',
+            }
+          },
+          fontFamily: {
+            display: ['"Plus Jakarta Sans"', 'sans-serif'],
+            sans: ['"Inter"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          boxShadow: {
+            'glow-azure': '0 20px 50px -15px rgba(2, 132, 199, 0.25)',
+            'card-soft': '0 4px 25px -2px rgba(10, 50, 84, 0.06)',
+            'card-hover': '0 16px 35px -4px rgba(2, 132, 199, 0.12)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Custom Atmospheric Aura mirroring reference_design.png */
+    .azure-atmosphere {
+      background: 
+        radial-gradient(circle at 92% 20%, rgba(56, 189, 248, 0.28) 0%, rgba(2, 132, 199, 0.20) 25%, rgba(10, 50, 84, 0.08) 50%, transparent 75%),
+        radial-gradient(circle at 10% 90%, rgba(224, 242, 254, 0.4) 0%, transparent 40%),
+        #f8fafc;
+    }
+    
+    /* Fine subtle tech grid pattern */
+    .tech-pattern {
+      background-image: radial-gradient(rgba(10, 50, 84, 0.07) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    /* Print styling */
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white !important; }
+    }
+
+    /* Name & Institution subtle sweeping shimmer */
+    @keyframes textShimmer {
+      0% {
+        background-position: 100% 0;
+      }
+      100% {
+        background-position: -100% 0;
+      }
+    }
+
+    .shimmer-name {
+      background: linear-gradient(90deg, #0a3254 0%, #0a3254 35%, #38bdf8 50%, #0a3254 65%, #0a3254 100%);
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline;
+      animation: textShimmer 3s linear infinite;
+    }
+
+    .shimmer-institution {
+      background: linear-gradient(90deg, #0f172a 0%, #0f172a 35%, #38bdf8 50%, #0f172a 65%, #0f172a 100%);
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline;
+      animation: textShimmer 3s linear infinite;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .shimmer-name {
+        animation: none;
+        background: none;
+        -webkit-text-fill-color: #0a3254;
+        color: #0a3254;
+      }
+      .shimmer-institution {
+        animation: none;
+        background: none;
+        -webkit-text-fill-color: #0f172a;
+        color: #0f172a;
+      }
+      .typing-keycap {
+        display: none !important;
+      }
+    }
+
+    /* Keyboard Typing Keycap Indicator */
+    .typing-keycap {
+      position: absolute;
+      background: rgba(128, 128, 128, 0.5);
+      border-radius: 6px;
+      pointer-events: none;
+      z-index: 0;
+      box-sizing: border-box;
+      display: none;
+      opacity: 0;
+    }
+
+    /* Skill Card Interactive Motion */
+    .skill-card {
+      transition: transform 300ms ease-out, box-shadow 300ms ease-out;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .skill-card .skill-icon-box {
+      transition: transform 300ms ease-out;
+    }
+
+    .skill-card:hover,
+    .skill-card:active,
+    .skill-card:focus-within,
+    .skill-card:focus {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 35px -10px rgba(10, 50, 84, 0.22);
+    }
+
+    .skill-card:hover .skill-icon-box,
+    .skill-card:active .skill-icon-box,
+    .skill-card:focus-within .skill-icon-box,
+    .skill-card:focus .skill-icon-box {
+      transform: rotate(-6deg) scale(1.1);
+    }
+
+    .skill-card:focus-visible {
+      box-shadow: 0 0 0 3px #0284c7, 0 20px 35px -10px rgba(10, 50, 84, 0.22);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .skill-card,
+      .skill-card .skill-icon-box {
+        transition: box-shadow 300ms ease-out !important;
+      }
+      .skill-card:hover,
+      .skill-card:active,
+      .skill-card:focus-within,
+      .skill-card:focus {
+        transform: none !important;
+      }
+      .skill-card:hover .skill-icon-box,
+      .skill-card:active .skill-icon-box,
+      .skill-card:focus-within .skill-icon-box,
+      .skill-card:focus .skill-icon-box {
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="azure-atmosphere text-slate-800 font-sans antialiased selection:bg-sky-100 selection:text-brand-navy min-h-screen flex flex-col relative overflow-x-hidden">
+
+  <!-- Top Decorative Background Aura -->
+  <div class="absolute top-0 right-0 w-[55vw] max-w-[850px] h-[550px] bg-gradient-to-bl from-sky-400/35 via-cyan-300/20 to-transparent blur-3xl pointer-events-none -z-10" aria-hidden="true"></div>
+
+  <!-- Navigation Bar -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 border-b border-brand-border/80 transition-all">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo / Monogram (Replicating double-check mark from reference_design.png) -->
+      <a href="#hero" class="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-sky rounded-lg p-1" aria-label="Liew Jian Cheng Portfolio Home">
+        <div class="w-10 h-10 rounded-xl bg-brand-navy flex items-center justify-center text-white shadow-md group-hover:bg-brand-navy-light transition-colors">
+          <!-- Double Check SVG Mark -->
+          <svg class="w-6 h-6 fill-none stroke-current stroke-[2.5]" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 13l4 4L17 7" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 13l3 3L21 7" />
+          </svg>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-extrabold text-brand-navy tracking-wider text-base leading-none">LIEW JIAN CHENG</span>
+          <span class="font-mono text-[10px] text-brand-sky uppercase font-semibold tracking-widest mt-1">AI & IoT Engineer</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600" aria-label="Main Navigation">
+        <a href="#projects" class="inline-flex items-center gap-2 hover:text-brand-navy transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-sky rounded px-2 py-1">
+          <i data-lucide="layers" class="w-4 h-4"></i>
+          <span>Projects</span>
+        </a>
+        <a href="#experience" class="inline-flex items-center gap-2 hover:text-brand-navy transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-sky rounded px-2 py-1">
+          <i data-lucide="briefcase" class="w-4 h-4"></i>
+          <span>Experience</span>
+        </a>
+        <a href="#education" class="inline-flex items-center gap-2 hover:text-brand-navy transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-sky rounded px-2 py-1">
+          <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+          <span>Education</span>
+        </a>
+        <a href="#skills" class="inline-flex items-center gap-2 hover:text-brand-navy transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-sky rounded px-2 py-1">
+          <i data-lucide="cpu" class="w-4 h-4"></i>
+          <span>Skills</span>
+        </a>
+      </nav>
+
+      <!-- Contact CTA -->
+      <div class="hidden sm:flex items-center">
+        <a href="mailto:liewjiancheng838@gmail.com" 
+           class="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-lg bg-brand-navy text-white hover:bg-brand-navy-light shadow-sm hover:shadow transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-sky">
+          <i data-lucide="mail" class="w-4 h-4"></i>
+          <span>Get in Touch</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-700 hover:text-brand-navy rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-sky" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle Navigation Menu">
+        <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-nav" class="hidden md:hidden border-t border-brand-border bg-white/95 backdrop-blur-md px-6 py-5 space-y-4">
+      <a href="#projects" class="flex items-center gap-2 text-base font-medium text-slate-700 hover:text-brand-navy py-1">
+        <i data-lucide="layers" class="w-4 h-4"></i>
+        <span>Projects</span>
+      </a>
+      <a href="#experience" class="flex items-center gap-2 text-base font-medium text-slate-700 hover:text-brand-navy py-1">
+        <i data-lucide="briefcase" class="w-4 h-4"></i>
+        <span>Experience</span>
+      </a>
+      <a href="#education" class="flex items-center gap-2 text-base font-medium text-slate-700 hover:text-brand-navy py-1">
+        <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+        <span>Education</span>
+      </a>
+      <a href="#skills" class="flex items-center gap-2 text-base font-medium text-slate-700 hover:text-brand-navy py-1">
+        <i data-lucide="cpu" class="w-4 h-4"></i>
+        <span>Skills</span>
+      </a>
+      <div class="pt-4 border-t border-slate-100 flex items-center justify-end">
+        <a href="mailto:liewjiancheng838@gmail.com" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-lg bg-brand-navy text-white">
+          <i data-lucide="mail" class="w-4 h-4"></i>
+          <span>Email Me</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    
+    <!-- Hero Section (Directly replicates typography, color hierarchy & aura of reference_design.png) -->
+    <section id="hero" class="relative pt-12 pb-20 md:pt-20 md:pb-28">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Left Hero Column: Typography replicating "BUSINESS PROPOSAL" weight -->
+          <div class="lg:col-span-8 space-y-6">
+            
+            <!-- Reference Style Top Badge & Brand Icon -->
+            <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-brand-navy text-xs font-semibold tracking-wider uppercase">
+              <svg class="w-4 h-4 stroke-brand-sky stroke-[2.5] fill-none" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 13l4 4L17 7" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 13l3 3L21 7" />
+              </svg>
+              <span>AI & IoT Engineering • Student Portfolio</span>
+            </div>
+
+            <!-- Massive Bold Condensed Typography -->
+            <h1 data-typing class="font-display font-extrabold text-brand-navy text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] tracking-tight leading-[0.98]">
+              INTELLIGENT<br>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-navy via-brand-navy-light to-brand-sky">
+                SYSTEMS
+              </span><br>
+              PORTFOLIO
+            </h1>
+
+            <p class="text-slate-600 text-lg sm:text-xl max-w-2xl font-normal leading-relaxed">
+              Hi, I'm <strong class="text-brand-navy font-semibold shimmer-name">Liew Jian Cheng</strong>, an AI & IoT Engineer and Bachelor of Computer Science (AI) student at the <span class="text-slate-900 font-medium shimmer-institution">University of Malaya</span>. I engineer autonomous AI agent workflows and hardware-integrated IoT solutions.
+            </p>
+
+            <!-- Quick Action Links & Reference URL Style Footer -->
+            <div class="pt-4 flex flex-wrap items-center gap-4">
+              <a href="#projects" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-brand-navy text-white font-semibold text-base shadow-md hover:bg-brand-navy-light hover:shadow-lg transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-sky">
+                <span>Explore Featured Work</span>
+                <i data-lucide="arrow-down-right" class="w-4 h-4"></i>
+              </a>
+
+              <a href="mailto:liewjiancheng838@gmail.com" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white border border-slate-300 text-brand-navy font-semibold text-base hover:border-brand-sky hover:bg-sky-50/50 shadow-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-sky">
+                <i data-lucide="mail" class="w-4 h-4 text-brand-sky"></i>
+                <span>liewjiancheng838@gmail.com</span>
+              </a>
+            </div>
+
+            <!-- Reference Design Bottom URL Stamp Replicated -->
+            <div class="pt-4 flex flex-wrap items-center gap-2.5 text-xs font-mono font-semibold text-brand-navy tracking-widest uppercase">
+              <span class="inline-flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5 text-emerald-500 shrink-0 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                <span>KUALA LUMPUR, MALAYSIA</span>
+              </span>
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse shrink-0 inline-block" aria-hidden="true"></span>
+              <span>AVAILABLE FOR RESEARCH & ENGINEERING</span>
+            </div>
+
+          </div>
+
+          <!-- Right Hero Column: Profile Card with Atmospheric Glow -->
+          <div class="lg:col-span-4 flex justify-center lg:justify-end">
+            <div class="relative group">
+              <!-- Glow backdrop behind photo -->
+              <div class="absolute -inset-1.5 bg-gradient-to-r from-sky-400 to-brand-sky rounded-3xl blur-xl opacity-40 group-hover:opacity-70 transition duration-500"></div>
+              
+              <div class="relative bg-white p-3 rounded-2xl border border-sky-100 shadow-glow-azure max-w-xs sm:max-w-sm">
+                <!-- User Profile Photo -->
+                <div class="aspect-square w-64 sm:w-72 overflow-hidden rounded-xl bg-slate-100 relative">
+                  <img src="profile.jpg" alt="Liew Jian Cheng - AI & IoT Engineer" class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105">
+                </div>
+
+                <!-- Profile Tag Details -->
+                <div class="p-4 space-y-2">
+                  <div class="flex items-center justify-between">
+                    <h2 class="font-display font-bold text-brand-navy text-lg">Liew Jian Cheng</h2>
+                    <span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Active</span>
+                  </div>
+                  <p class="text-xs text-slate-500 font-medium">B.CS (Artificial Intelligence) @ UM</p>
+                  
+                  <div class="pt-2 flex items-center gap-2 border-t border-slate-100">
+                    <a href="https://linkedin.com/in/liew-jian-cheng-956029352/" target="_blank" rel="noopener noreferrer" 
+                       class="flex-1 inline-flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-sky-50 hover:bg-sky-100 text-brand-sky text-xs font-semibold transition-colors"
+                       aria-label="Connect on LinkedIn">
+                      <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                      </svg>
+                      <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/JianCheng929" target="_blank" rel="noopener noreferrer" 
+                       class="flex-1 inline-flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-colors"
+                       aria-label="View GitHub profile">
+                      <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                      </svg>
+                      <span>GitHub</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Key Metrics / Achievements Bar -->
+    <section class="py-8 border-y border-brand-border bg-white/60 backdrop-blur-sm tech-pattern">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 items-stretch">
+          
+          <!-- Stat 1: CGPA 4.00 -->
+          <div class="bg-white/40 backdrop-blur-md border border-white/60 rounded-2xl shadow-sm px-4 sm:px-6 py-6 text-center flex flex-col items-center justify-center h-full">
+            <div class="font-display font-extrabold text-[clamp(1.5rem,2.8vw,2.5rem)] text-brand-navy whitespace-nowrap tracking-tight leading-none">CGPA 4.00</div>
+            <div class="text-xs font-medium text-slate-500 mt-2.5 uppercase tracking-wider text-center">Matriculation (Sem 1 & 2)</div>
+          </div>
+
+          <!-- Stat 2: SPM 10As -->
+          <div class="bg-white/40 backdrop-blur-md border border-white/60 rounded-2xl shadow-sm px-4 sm:px-6 py-6 text-center flex flex-col items-center justify-center h-full">
+            <div class="font-display font-extrabold text-[clamp(1.5rem,2.8vw,2.5rem)] text-brand-sky whitespace-nowrap tracking-tight leading-none">SPM 10As</div>
+            <div class="text-xs font-medium text-slate-500 mt-2.5 uppercase tracking-wider text-center">7A+, 3A Academic Honors</div>
+          </div>
+
+          <!-- Stat 3: DORMATHON -->
+          <div class="bg-white/40 backdrop-blur-md border border-white/60 rounded-2xl shadow-sm px-4 sm:px-6 py-6 text-center flex flex-col items-center justify-center h-full">
+            <div class="font-display font-extrabold text-[clamp(1.5rem,2.8vw,2.5rem)] text-brand-navy whitespace-nowrap tracking-tight leading-none">DORMATHON</div>
+            <div class="text-xs font-medium text-slate-500 mt-2.5 uppercase tracking-wider text-center">2026 AI Agent Module Lead</div>
+          </div>
+
+          <!-- Stat 4: IoT + AI -->
+          <div class="bg-white/40 backdrop-blur-md border border-white/60 rounded-2xl shadow-sm px-4 sm:px-6 py-6 text-center flex flex-col items-center justify-center h-full">
+            <div class="font-display font-extrabold text-[clamp(1.5rem,2.8vw,2.5rem)] text-brand-sky whitespace-nowrap tracking-tight leading-none">IoT + AI</div>
+            <div class="text-xs font-medium text-slate-500 mt-2.5 uppercase tracking-wider text-center">ESP32, BLE & Multi-Agent Tech</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section id="projects" class="py-20 relative">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-brand-border pb-6">
+          <div>
+            <div class="inline-flex items-center gap-2 text-brand-sky font-mono text-xs uppercase font-semibold tracking-wider mb-2">
+              <i data-lucide="layers" class="w-4 h-4"></i>
+              <span>Engineering Portfolio</span>
+            </div>
+            <h2 data-typing class="font-display font-extrabold text-3xl sm:text-4xl text-brand-navy tracking-tight">
+              Featured Projects & Systems
+            </h2>
+          </div>
+          <p class="text-slate-500 text-sm max-w-md">
+            Production-grade implementations spanning autonomous AI business workflows and hardware-software IoT integrations.
+          </p>
+        </div>
+
+        <!-- Project Cards Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+          <!-- Project 1: BizPilot -->
+          <article class="bg-white rounded-2xl border border-brand-border p-8 shadow-card-soft hover:shadow-card-hover hover:border-sky-300 transition-all duration-300 flex flex-col justify-between group">
+            <div class="space-y-5">
+              
+              <!-- Badges & Period -->
+              <div class="flex items-center justify-between flex-wrap gap-2">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-sky-50 text-brand-sky border border-sky-200">
+                  <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                  <span>DORMATHON 2026 • Taylor University</span>
+                </span>
+                <span class="text-xs font-mono font-medium text-slate-400">11 – 12 Oct 2026</span>
+              </div>
+
+              <!-- Title & Role -->
+              <div>
+                <h3 class="font-display font-bold text-2xl text-brand-navy group-hover:text-brand-sky transition-colors flex items-center justify-between">
+                  <span>BizPilot</span>
+                  <i data-lucide="external-link" class="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                </h3>
+                <p class="text-sm font-medium text-brand-sky mt-1">Marketing & Growth Module Lead, Pitch Presenter</p>
+              </div>
+
+              <!-- Description points strictly from resume -->
+              <p class="text-slate-600 text-sm leading-relaxed">
+                An AI operations agent built to resolve Malaysian SMEs' core business challenges, designed and engineered at the DORMATHON 2026 competition.
+              </p>
+
+              <ul class="space-y-2.5 text-sm text-slate-600">
+                <li class="flex items-start gap-2.5">
+                  <div class="w-5 h-5 rounded-full bg-sky-100 text-brand-sky flex items-center justify-center shrink-0 mt-0.5">
+                    <i data-lucide="check" class="w-3 h-3"></i>
+                  </div>
+                  <span>Engineered the autonomous marketing engine that drafts weekly bilingual social campaigns, visuals, and ad plans.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <div class="w-5 h-5 rounded-full bg-sky-100 text-brand-sky flex items-center justify-center shrink-0 mt-0.5">
+                    <i data-lucide="check" class="w-3 h-3"></i>
+                  </div>
+                  <span>Implemented strict human-in-the-loop owner approval protocols before publishing or financial ad spending.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <div class="w-5 h-5 rounded-full bg-sky-100 text-brand-sky flex items-center justify-center shrink-0 mt-0.5">
+                    <i data-lucide="check" class="w-3 h-3"></i>
+                  </div>
+                  <span>Designed the comprehensive technical pitch deck and delivered the final presentation powered by WorkBuddy Agent.</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Tech Stack Tags -->
+            <div class="pt-6 mt-6 border-t border-slate-100 flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-slate-100 text-slate-700">Tencent WorkBuddy</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-slate-100 text-slate-700">Python</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-slate-100 text-slate-700">JSON</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-slate-100 text-slate-700">GitHub</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-sky-50 text-brand-sky">AI Agents</span>
+            </div>
+          </article>
+
+          <!-- Project 2: BLUEPIXELS SmartLocator -->
+          <article class="bg-white rounded-2xl border border-brand-border p-8 shadow-card-soft hover:shadow-card-hover hover:border-sky-300 transition-all duration-300 flex flex-col justify-between group">
+            <div class="space-y-5">
+              
+              <!-- Badges & Period -->
+              <div class="flex items-center justify-between flex-wrap gap-2">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-sky-50 text-brand-sky border border-sky-200">
+                  <i data-lucide="radio" class="w-3.5 h-3.5"></i>
+                  <span>Johor Matriculation College</span>
+                </span>
+                <span class="text-xs font-mono font-medium text-slate-400">July 2025 – April 2026</span>
+              </div>
+
+              <!-- Title & Role -->
+              <div>
+                <h3 class="font-display font-bold text-2xl text-brand-navy group-hover:text-brand-sky transition-colors flex items-center justify-between">
+                  <span>BLUEPIXELS SmartLocator</span>
+                  <i data-lucide="external-link" class="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                </h3>
+                <p class="text-sm font-medium text-brand-sky mt-1">IoT Engineer & Core Developer</p>
+              </div>
+
+              <!-- Description points strictly from resume -->
+              <p class="text-slate-600 text-sm leading-relaxed">
+                An IoT Indoor Bluetooth item tracking architecture engineered to help dormitory students locate misplaced personal belongings across multiple floors.
+              </p>
+
+              <ul class="space-y-2.5 text-sm text-slate-600">
+                <li class="flex items-start gap-2.5">
+                  <div class="w-5 h-5 rounded-full bg-sky-100 text-brand-sky flex items-center justify-center shrink-0 mt-0.5">
+                    <i data-lucide="check" class="w-3 h-3"></i>
+                  </div>
+                  <span>Programmed a native Flutter Android application paired with a Firebase real-time database backend for live BLE tracking.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <div class="w-5 h-5 rounded-full bg-sky-100 text-brand-sky flex items-center justify-center shrink-0 mt-0.5">
+                    <i data-lucide="check" class="w-3 h-3"></i>
+                  </div>
+                  <span>Executed hardware-software integration with ESP32 microcontrollers for multi-floor vertical tracking and pressure sensor detection.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <div class="w-5 h-5 rounded-full bg-sky-100 text-brand-sky flex items-center justify-center shrink-0 mt-0.5">
+                    <i data-lucide="check" class="w-3 h-3"></i>
+                  </div>
+                  <span>Calibrated RSSI signal attenuation and threshold algorithms to output precise proximity alert triggers.</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Tech Stack Tags -->
+            <div class="pt-6 mt-6 border-t border-slate-100 flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-slate-100 text-slate-700">Flutter</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-slate-100 text-slate-700">Firebase</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-slate-100 text-slate-700">ESP32</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-slate-100 text-slate-700">BLE</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-slate-100 text-slate-700">Arduino IDE</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-sky-50 text-brand-sky">Tinkercad</span>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Experience & Technical Leadership Section -->
+    <section id="experience" class="py-20 bg-white/70 backdrop-blur-md border-y border-brand-border">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-brand-border pb-6">
+          <div>
+            <div class="inline-flex items-center gap-2 text-brand-sky font-mono text-xs uppercase font-semibold tracking-wider mb-2">
+              <i data-lucide="briefcase" class="w-4 h-4"></i>
+              <span>Organizational Impact</span>
+            </div>
+            <h2 data-typing class="font-display font-extrabold text-3xl sm:text-4xl text-brand-navy tracking-tight">
+              Leadership & Community Roles
+            </h2>
+          </div>
+          <p class="text-slate-500 text-sm max-w-md">
+            Guiding peers, orchestrating creative multimedia initiatives, and fostering collaborative excellence.
+          </p>
+        </div>
+
+        <!-- Leadership Timeline Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          <!-- Role 1: PAL Leader in Computer Science -->
+          <div class="p-8 rounded-2xl bg-white border border-brand-border shadow-card-soft hover:shadow-card-hover transition-all">
+            <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-3">
+              <span class="font-semibold text-brand-sky">Johor Matriculation College</span>
+              <span>July 2025 – April 2026</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-brand-navy">PAL (Peer-Assisted Learning) Leader</h3>
+            <p class="text-xs text-slate-500 font-mono mt-0.5">Computer Science Department</p>
+
+            <ul class="mt-4 space-y-3 text-sm text-slate-600">
+              <li class="flex items-start gap-2">
+                <i data-lucide="arrow-right" class="w-4 h-4 text-brand-sky shrink-0 mt-0.5"></i>
+                <span>Authored and maintained Notion-compiled digital knowledge bases for Database and Programming modules, mentoring peers in weekly sharing sessions.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="arrow-right" class="w-4 h-4 text-brand-sky shrink-0 mt-0.5"></i>
+                <span>Created the <em>Burger Re-Build (BRB)</em> educational framework using Genially to visualize complex integration topics, leading the team to a <strong>Bronze Award</strong> in the 3-Minute Math Competition.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Role 2: SRN Publicity & Multimedia Executive Committee -->
+          <div class="p-8 rounded-2xl bg-white border border-brand-border shadow-card-soft hover:shadow-card-hover transition-all">
+            <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-3">
+              <span class="font-semibold text-brand-sky">Johor Matriculation College</span>
+              <span>July 2025 – April 2026</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-brand-navy">Publicity & Multimedia Executive Committee</h3>
+            <p class="text-xs text-slate-500 font-mono mt-0.5">Sekretariat Rukun Negara (SRN)</p>
+
+            <ul class="mt-4 space-y-3 text-sm text-slate-600">
+              <li class="flex items-start gap-2">
+                <i data-lucide="arrow-right" class="w-4 h-4 text-brand-sky shrink-0 mt-0.5"></i>
+                <span>Spearheaded visual design for patriotic digital campaign posters and promotional media for nationwide video and music competitions.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="arrow-right" class="w-4 h-4 text-brand-sky shrink-0 mt-0.5"></i>
+                <span>Collaborated within a multiracial committee to secure the <strong>Silver Award</strong> in the prestigious <em>'Lagu Seni Kreatif Warisan Budaya'</em> competition.</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 relative">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-brand-border pb-6">
+          <div>
+            <div class="inline-flex items-center gap-2 text-brand-sky font-mono text-xs uppercase font-semibold tracking-wider mb-2">
+              <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+              <span>Academic Foundation</span>
+            </div>
+            <h2 data-typing class="font-display font-extrabold text-3xl sm:text-4xl text-brand-navy tracking-tight">
+              Education & Honors
+            </h2>
+          </div>
+          <p class="text-slate-500 text-sm max-w-md">
+            Rigorous foundations in Artificial Intelligence, Computer Science, and Mathematics.
+          </p>
+        </div>
+
+        <!-- Education Cards -->
+        <div class="space-y-6">
+
+          <!-- UM -->
+          <div class="bg-white rounded-2xl border border-brand-border p-6 sm:p-8 shadow-card-soft hover:border-sky-300 transition-all flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div class="space-y-2">
+              <div class="flex items-center gap-3">
+                <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-semibold bg-sky-100 text-brand-sky border border-sky-200">Current</span>
+                <span class="text-xs font-mono text-slate-400">Kuala Lumpur, Malaysia</span>
+              </div>
+              <h3 class="font-display font-bold text-2xl text-brand-navy">University of Malaya (UM)</h3>
+              <p class="text-slate-700 font-medium text-base">Bachelor of Computer Science (Artificial Intelligence)</p>
+            </div>
+            <div class="md:text-right">
+              <div class="font-mono text-sm font-semibold text-brand-navy">Sept 2026 – Present</div>
+              <div class="text-xs text-slate-500 mt-1">Undergraduate Program</div>
+            </div>
+          </div>
+
+          <!-- JMC -->
+          <div class="bg-white rounded-2xl border border-brand-border p-6 sm:p-8 shadow-card-soft hover:border-sky-300 transition-all flex flex-col md:flex-row md:items-start justify-between gap-6">
+            <div class="space-y-3">
+              <div class="flex items-center gap-3">
+                <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">CGPA 4.00 / 4.00</span>
+                <span class="text-xs font-mono text-slate-400">Tangkak, Johor</span>
+              </div>
+              <div>
+                <h3 class="font-display font-bold text-2xl text-brand-navy">Johor Matriculation College (JMC)</h3>
+                <p class="text-slate-700 font-medium text-base">Pre-University Matriculation (Semester 1 & 2)</p>
+              </div>
+              <p class="text-sm text-slate-600 max-w-2xl">
+                <strong>Leadership Roles:</strong> President for Explorace ‘Race for Value’ Program • Secretariat for College-level Badminton Competition.
+              </p>
+            </div>
+            <div class="md:text-right shrink-0">
+              <div class="font-mono text-sm font-semibold text-brand-navy">June 2025 – May 2026</div>
+              <div class="text-xs text-emerald-600 font-semibold mt-1">Perfect Academic Score</div>
+            </div>
+          </div>
+
+          <!-- HSM -->
+          <div class="bg-white rounded-2xl border border-brand-border p-6 sm:p-8 shadow-card-soft hover:border-sky-300 transition-all flex flex-col md:flex-row md:items-start justify-between gap-6">
+            <div class="space-y-3">
+              <div class="flex items-center gap-3">
+                <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-semibold bg-amber-50 text-amber-700 border border-amber-200">SPM 10As (7A+, 3A)</span>
+                <span class="text-xs font-mono text-slate-400">Muar, Johor</span>
+              </div>
+              <div>
+                <h3 class="font-display font-bold text-2xl text-brand-navy">Muar High School (HSM)</h3>
+                <p class="text-slate-700 font-medium text-base">Sijil Pelajaran Malaysia (SPM)</p>
+              </div>
+              <p class="text-sm text-slate-600 max-w-2xl">
+                <strong>Achievements:</strong> Gold Award for District Chinese Creative Writing • National Cyber Security Discourse (NICTSED) • Finalist for Youth STEM Cup 2024.<br>
+                <strong>Leadership Roles:</strong> Secretariat for Mandarin Club and Chess Club.
+              </p>
+            </div>
+            <div class="md:text-right shrink-0">
+              <div class="font-mono text-sm font-semibold text-brand-navy">2020 – 2025</div>
+              <div class="text-xs text-slate-500 mt-1">Secondary Education</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Skills & Technology Matrix -->
+    <section id="skills" class="py-20 bg-white/70 backdrop-blur-md border-y border-brand-border">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-brand-border pb-6">
+          <div>
+            <div class="inline-flex items-center gap-2 text-brand-sky font-mono text-xs uppercase font-semibold tracking-wider mb-2">
+              <i data-lucide="cpu" class="w-4 h-4"></i>
+              <span>Capabilities</span>
+            </div>
+            <h2 data-typing class="font-display font-extrabold text-3xl sm:text-4xl text-brand-navy tracking-tight">
+              Technical Arsenal & Skills
+            </h2>
+          </div>
+          <p class="text-slate-500 text-sm max-w-md">
+            Verified technical tools, programming languages, and hardware frameworks mastered through active development.
+          </p>
+        </div>
+
+        <!-- Skills Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          <!-- Category 1: Languages -->
+          <div tabindex="0" class="skill-card p-6 rounded-2xl bg-[#BBD6E1] shadow-card-soft space-y-4">
+            <div class="skill-icon-box w-10 h-10 rounded-xl bg-white/50 text-brand-navy flex items-center justify-center">
+              <i data-lucide="code-2" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-display font-bold text-lg text-brand-navy">Languages</h3>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-white/50 text-brand-navy">Python</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-white/50 text-brand-navy">Java</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-white/50 text-brand-navy">JavaScript</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-white/50 text-brand-navy">Dart</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-white/50 text-brand-navy">C/C++</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-white/50 text-brand-navy">SQL</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-white/50 text-brand-navy">HTML/CSS</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-white/50 text-brand-navy">JSON</span>
+            </div>
+          </div>
+
+          <!-- Category 2: Frameworks & Platforms -->
+          <div tabindex="0" class="skill-card p-6 rounded-2xl bg-[#95BFD1] shadow-card-soft space-y-4">
+            <div class="skill-icon-box w-10 h-10 rounded-xl bg-white/50 text-brand-navy flex items-center justify-center">
+              <i data-lucide="box" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-display font-bold text-lg text-brand-navy">Frameworks & Platforms</h3>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-semibold bg-white text-brand-sky shadow-sm">Flutter</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-white/50 text-brand-navy">Firebase</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-white/50 text-brand-navy">Tencent WorkBuddy</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-white/50 text-brand-navy">Claude Code</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-white/50 text-brand-navy">Codex</span>
+            </div>
+          </div>
+
+          <!-- Category 3: Hardware & IoT -->
+          <div tabindex="0" class="skill-card p-6 rounded-2xl bg-[#6BA1BC] shadow-card-soft space-y-4">
+            <div class="skill-icon-box w-10 h-10 rounded-xl bg-white/50 text-brand-navy flex items-center justify-center">
+              <i data-lucide="circuit-board" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-display font-bold text-lg text-brand-navy">Hardware & IoT</h3>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-semibold bg-white text-brand-sky shadow-sm">ESP32</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-white/50 text-brand-navy">BLE</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-white/50 text-brand-navy">Bluetooth Low Energy</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-white/50 text-brand-navy">I2C Sensors</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-white/50 text-brand-navy">Sensor Integration</span>
+            </div>
+          </div>
+
+          <!-- Category 4: Developer Tools -->
+          <div tabindex="0" class="skill-card p-6 rounded-2xl bg-[#2E7398] shadow-card-soft space-y-4">
+            <div class="skill-icon-box w-10 h-10 rounded-xl bg-white/15 text-white flex items-center justify-center">
+              <i data-lucide="wrench" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-display font-bold text-lg text-white">Developer Tools</h3>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-white/15 text-white border border-white/25">Git / GitHub</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-white/15 text-white border border-white/25">Arduino IDE</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-white/15 text-white border border-white/25">Android Studio</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-white/15 text-white border border-white/25">3D Printing</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-white/15 text-white border border-white/25">Tinkercad</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Connect / Contact Section -->
+    <section id="contact" class="py-20 relative">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+        
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-brand-navy text-xs font-semibold tracking-wider uppercase">
+          <i data-lucide="send" class="w-3.5 h-3.5 text-brand-sky"></i>
+          <span>Direct Inquiries</span>
+        </div>
+
+        <h2 data-typing class="font-display font-extrabold text-4xl sm:text-5xl text-brand-navy tracking-tight">Let's Build Something Remarkable.</h2>
+
+        <p class="text-slate-600 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
+          Open to AI agent research, IoT engineering collaborations, and software development opportunities.
+        </p>
+
+        <!-- Official Channels (Strict Privacy: Email & LinkedIn only) -->
+        <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+          
+          <a href="mailto:liewjiancheng838@gmail.com" 
+             class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-brand-navy text-white font-semibold text-base shadow-md hover:bg-brand-navy-light hover:shadow-lg transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-sky">
+            <i data-lucide="mail" class="w-5 h-5"></i>
+            <span>liewjiancheng838@gmail.com</span>
+          </a>
+
+          <a href="https://linkedin.com/in/liew-jian-cheng-956029352/" target="_blank" rel="noopener noreferrer" 
+             class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-white border border-slate-300 text-brand-navy font-semibold text-base hover:border-brand-sky hover:bg-sky-50/50 shadow-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-sky">
+            <svg class="w-[18px] h-[18px] fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+            <span>Connect on LinkedIn</span>
+          </a>
+
+        </div>
+
+        <!-- Copy Email Toast Utility -->
+        <div class="pt-2">
+          <button id="copy-email-btn" class="inline-flex items-center gap-2 text-xs font-mono text-slate-500 hover:text-brand-navy py-1 px-3 rounded-md hover:bg-slate-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-sky">
+            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+            <span id="copy-label">Click to copy email address</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer Replicating Reference Design Bottom Section -->
+  <footer class="border-t border-brand-border bg-white py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <!-- Monogram and Identity -->
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-brand-navy flex items-center justify-center text-white">
+          <svg class="w-5 h-5 fill-none stroke-current stroke-[2.5]" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 13l4 4L17 7" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 13l3 3L21 7" />
+          </svg>
+        </div>
+        <div>
+          <div class="font-display font-bold text-sm text-brand-navy">Liew Jian Cheng</div>
+          <div class="text-[11px] font-mono text-slate-400">Computer Science (AI) • University of Malaya</div>
+        </div>
+      </div>
+
+      <!-- Links -->
+      <div class="flex items-center gap-6 text-sm text-slate-500 font-medium">
+        <a href="https://linkedin.com/in/liew-jian-cheng-956029352/" target="_blank" rel="noopener noreferrer" class="hover:text-brand-navy transition-colors">LinkedIn</a>
+        <a href="https://github.com/JianCheng929" target="_blank" rel="noopener noreferrer" class="hover:text-brand-navy transition-colors">GitHub</a>
+        <a href="mailto:liewjiancheng838@gmail.com" class="hover:text-brand-navy transition-colors">Email</a>
+        <a href="#hero" class="hover:text-brand-navy transition-colors flex items-center gap-1">
+          <span>Back to Top</span>
+          <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i>
+        </a>
+      </div>
+
+      <!-- Reference Design URL Format -->
+      <div class="font-mono text-xs font-semibold text-brand-navy tracking-wider uppercase">
+        WWW.LIEWJIANCHENG.DEV
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Script for Lucide Icons & Simple Interactions -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Mobile Navigation Toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    if (mobileBtn && mobileNav) {
+      mobileBtn.addEventListener('click', () => {
+        const isExpanded = mobileBtn.getAttribute('aria-expanded') === 'true';
+        mobileBtn.setAttribute('aria-expanded', !isExpanded);
+        mobileNav.classList.toggle('hidden');
+      });
+
+      // Close mobile menu when a nav link is clicked
+      mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileNav.classList.add('hidden');
+          mobileBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    // Email Copy Button Utility
+    const copyBtn = document.getElementById('copy-email-btn');
+    const copyLabel = document.getElementById('copy-label');
+    const emailStr = 'liewjiancheng838@gmail.com';
+
+    if (copyBtn && copyLabel) {
+      copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(emailStr).then(() => {
+          copyLabel.textContent = 'Copied to clipboard!';
+          copyBtn.classList.add('text-emerald-600');
+          setTimeout(() => {
+            copyLabel.textContent = 'Click to copy email address';
+            copyBtn.classList.remove('text-emerald-600');
+          }, 2500);
+        }).catch(() => {
+          // Fallback if clipboard API is restricted
+          window.location.href = 'mailto:' + emailStr;
+        });
+      });
+    }
+
+    // Reusable Keyboard Typing Animation with Keycap Indicator
+    function initKeyboardTyping() {
+      const headings = document.querySelectorAll('[data-typing]');
+      if (!headings.length) return;
+
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) return;
+
+      const preparedMap = new Map();
+
+      function prepareHeading(heading) {
+        const fullText = heading.textContent.replace(/\s+/g, ' ').trim();
+        const originalHTML = heading.innerHTML;
+        if (!heading.getAttribute('aria-label')) {
+          heading.setAttribute('aria-label', fullText);
+        }
+
+        const keycap = document.createElement('span');
+        keycap.className = 'typing-keycap';
+        keycap.setAttribute('aria-hidden', 'true');
+        keycap.style.cssText = 'position:absolute;display:none;opacity:0;pointer-events:none;z-index:0;background:rgba(128,128,128,0.5);border-radius:6px;box-sizing:border-box;';
+
+        const charSpans = [];
+
+        function walk(node) {
+          if (node.nodeType === Node.TEXT_NODE) {
+            let text = node.nodeValue;
+            if (!text) return;
+            text = text.replace(/[\r\n\t]+/g, ' ');
+            const prev = node.previousSibling;
+            if (!prev || (prev.nodeType === Node.ELEMENT_NODE && prev.tagName.toLowerCase() === 'br')) {
+              text = text.replace(/^ +/, '');
+            }
+            const next = node.nextSibling;
+            if (!next || (next.nodeType === Node.ELEMENT_NODE && next.tagName.toLowerCase() === 'br')) {
+              text = text.replace(/ +$/, '');
+            }
+            if (!text) return;
+
+            const frag = document.createDocumentFragment();
+            for (let i = 0; i < text.length; i++) {
+              const char = text[i];
+              const span = document.createElement('span');
+              span.className = 'type-char';
+              span.setAttribute('aria-hidden', 'true');
+              span.style.opacity = '0';
+              span.textContent = char;
+              frag.appendChild(span);
+              charSpans.push(span);
+            }
+            node.parentNode.replaceChild(frag, node);
+          } else if (node.nodeType === Node.ELEMENT_NODE) {
+            if (node.tagName.toLowerCase() !== 'br') {
+              Array.from(node.childNodes).forEach(walk);
+            }
+          }
+        }
+
+        Array.from(heading.childNodes).forEach(walk);
+        heading.style.position = 'relative';
+        heading.insertBefore(keycap, heading.firstChild);
+
+        return { charSpans, keycap, heading, originalHTML };
+      }
+
+      function playTyping({ charSpans, keycap, heading, originalHTML }) {
+        let index = 0;
+        const speed = 110; // steady 110ms per letter
+
+        function step() {
+          if (index >= charSpans.length) {
+            // Last letter typed: keycap fades out over 300ms, then clean original HTML is restored
+            keycap.style.transition = 'opacity 300ms ease';
+            keycap.style.opacity = '0';
+            setTimeout(() => {
+              keycap.remove();
+              heading.innerHTML = originalHTML;
+            }, 300);
+            return;
+          }
+
+          const span = charSpans[index];
+          span.style.opacity = '1';
+          const char = span.textContent;
+
+          if (char && char.trim() !== '') {
+            const headingRect = heading.getBoundingClientRect();
+            const charRect = span.getBoundingClientRect();
+            
+            const padX = 4;
+            const padY = 2;
+            const targetW = Math.max(18, charRect.width + padX * 2);
+            const targetH = Math.max(20, charRect.height + padY * 2);
+            const leftOffset = charRect.left - headingRect.left - (targetW - charRect.width) / 2;
+            const topOffset = charRect.top - headingRect.top - (targetH - charRect.height) / 2;
+
+            keycap.style.transition = 'none';
+            keycap.style.left = leftOffset + 'px';
+            keycap.style.top = topOffset + 'px';
+            keycap.style.width = targetW + 'px';
+            keycap.style.height = targetH + 'px';
+            keycap.style.display = 'block';
+            keycap.style.opacity = '1';
+          } else {
+            // Space: skipped (no keycap on spaces)
+            keycap.style.display = 'none';
+            keycap.style.opacity = '0';
+          }
+
+          index++;
+          setTimeout(step, speed);
+        }
+
+        step();
+      }
+
+      headings.forEach(h => {
+        preparedMap.set(h, prepareHeading(h));
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const heading = entry.target;
+            observer.unobserve(heading);
+            if (!heading._hasAnimated) {
+              heading._hasAnimated = true;
+              const data = preparedMap.get(heading);
+              if (data) playTyping(data);
+            }
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      headings.forEach(h => observer.observe(h));
+
+      // Trigger hero immediately on page load
+      const heroHeading = document.querySelector('#hero [data-typing]');
+      if (heroHeading) {
+        setTimeout(() => {
+          if (!heroHeading._hasAnimated) {
+            heroHeading._hasAnimated = true;
+            observer.unobserve(heroHeading);
+            const data = preparedMap.get(heroHeading);
+            if (data) playTyping(data);
+          }
+        }, 150);
+      }
+    }
+
+    initKeyboardTyping();
+  </script>
+</body>
+</html>
